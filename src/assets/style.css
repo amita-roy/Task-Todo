@@ -63,3 +63,17 @@ body {
 .todos {
   list-style: none;
 }
+
+.project {
+  list-style-type: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.project:hover {
+  background-color: rgba(211, 211, 211, 0.3);
+}
+
+.active {
+  background-color: rgba(211, 211, 211, 0.3);
+}
