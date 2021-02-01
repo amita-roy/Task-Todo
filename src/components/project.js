@@ -6,6 +6,14 @@ class Project {
     this.todos = [];
   }
 
+  static fromJSON(json) {
+    const project = new Project(json.name);
+    project.todos = json.todos.map(
+      (todo) => new Todo(todo.title, todo.description, todo.dueDate, todo.priority),
+    );
+    return project;
+  }
+
   getName() {
     return this.name;
   }
@@ -24,14 +32,6 @@ class Project {
 
   updateTodo(todo, index) {
     this.todos[index] = todo;
-  }
-
-  setActive() {
-    this.active = true;
-  }
-
-  setInactive() {
-    this.active = false;
   }
 }
 

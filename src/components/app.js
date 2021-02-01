@@ -23,12 +23,31 @@ class App {
     this.activeProjectIndex = 0;
   }
 
+  static loadFromLocalStorage() {
+    const data = localStorage.getItem('data');
+    const app = new App();
+    if (!data) {
+      return app;
+    }
+
+    const json = JSON.parse(data);
+    app.activeProjectIndex = json.activeProjectIndex;
+    app.projects = json.projects.map((p) => Project.fromJSON(p));
+    return app;
+  }
+
+  saveToLocalStorage() {
+    const data = JSON.stringify(this);
+    localStorage.setItem('data', data);
+  }
+
   getActiveProjectIndex() {
     return this.activeProjectIndex;
   }
 
   setActiveProjectIndex(index) {
     this.activeProjectIndex = index;
+    this.saveToLocalStorage();
   }
 
   getActiveProject() {
@@ -42,6 +61,34 @@ class App {
   addNewProject(name) {
     const project = new Project(name);
     this.projects.push(project);
+    this.saveToLocalStorage();
+  }
+
+  removeProjectAt(index) {
+    if (this.projects.length === 1) {
+      return;
+    }
+    this.projects.splice(index, 1);
+    this.activeProjectIndex = 0;
+    this.saveToLocalStorage();
+  }
+
+  addTodo(title, description, dueDate, priority) {
+    const activeProject = this.getActiveProject();
+    activeProject.addTodo(title, description, dueDate, priority);
+    this.saveToLocalStorage();
+  }
+
+  removeTodoAt(index) {
+    const activeProject = this.getActiveProject();
+    activeProject.removeTodoAt(index);
+    this.saveToLocalStorage();
+  }
+
+  updateTodo(todo, index) {
+    const activeProject = this.getActiveProject();
+    activeProject.updateTodo(todo, index);
+    this.saveToLocalStorage();
   }
 }
 

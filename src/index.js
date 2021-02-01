@@ -15,7 +15,7 @@ const renderProjects = (projects, activeProjectIndex) => {
   projectContainer.empty();
   projects.forEach((project, index) => {
     projectContainer.append(
-      `<li class="project" data-id=${index}>${project.getName()} </li>`
+      `<li class="project project${index}" data-id=${index}>${project.getName()}</li>`,
     );
   });
   $('.project').removeClass('active');
@@ -27,17 +27,19 @@ const renderTodos = (activeProject) => {
 
   todoContainer.empty();
   activeProject.getTodos().forEach((todo, index) => {
-    const { title, priority, dueDate, description } = todo.getInfo();
+    const {
+      title, priority, dueDate, description,
+    } = todo.getInfo();
 
     todoContainer.append(
       `<li class="todo" data-id=${index}>
       <div class="todoTopContent">
       <p>${title}</p>
-      <p data-id=${index}><span class="${priority}">${priority}</span>
-      <span>${dueDate}</span> <span class="delete">Delete</span></p>
+      <p><span class="${priority}">${priority}</span>
+      <span>${dueDate}</span> <span data-id=${index} class="delete">Delete</span></p>
       </div>
       <p class="todo-description">${description}</p>
-      </li>`
+      </li>`,
     );
   });
 
@@ -55,7 +57,7 @@ const renderSelectedTodo = (todo, index) => {
 };
 
 const main = () => {
-  const app = new App();
+  const app = App.loadFromLocalStorage();
   renderProjects(app.getAllProjects(), app.getActiveProjectIndex());
   renderTodos(app.getActiveProject());
 
@@ -77,16 +79,15 @@ const main = () => {
   const handleTodoDelete = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const index = $(event.target).parent().data('id');
-    const activeProject = app.getActiveProject();
-    activeProject.removeTodoAt(index);
-    renderTodos(activeProject);
+    const index = $(event.target).data('id');
+    app.removeTodoAt(index);
+    renderTodos(app.getActiveProject());
     $('.todo').on('click', handleSelectTodo);
     $('.delete').on('click', handleTodoDelete);
   };
 
   const handleChangeActiveProject = (event) => {
-    const index = $(event.target).data('id');
+    const index = $(event.currentTarget).data('id');
     app.setActiveProjectIndex(index);
     renderProjects(app.getAllProjects(), app.getActiveProjectIndex());
     renderTodos(app.getActiveProject());
@@ -119,14 +120,8 @@ const main = () => {
     event.preventDefault();
     const form = $(event.target);
     const todo = form.serializeArray();
-    const activeProject = app.getActiveProject();
-    activeProject.addTodo(
-      todo[0].value,
-      todo[1].value,
-      todo[3].value,
-      todo[2].value
-    );
-    renderTodos(activeProject);
+    app.addTodo(todo[0].value, todo[1].value, todo[3].value, todo[2].value);
+    renderTodos(app.getActiveProject());
     $('.todo').on('click', handleSelectTodo);
     $('.delete').on('click', handleTodoDelete);
     form[0].reset();
@@ -143,10 +138,10 @@ const main = () => {
       todoUpdates[0].value,
       todoUpdates[1].value,
       todoUpdates[3].value,
-      todoUpdates[2].value
+      todoUpdates[2].value,
     );
 
-    activeProject.updateTodo(updatedTodo, index);
+    app.updateTodo(updatedTodo, index);
     form[0].reset();
     $('#editActiveTodoFormContainer').hide();
     renderTodos(activeProject);
@@ -171,6 +166,7 @@ const main = () => {
   $('#todoForm').on('submit', handleAddNewTodo);
 
   $('#editActiveTodoForm').on('submit', handleEditTodo);
+
   $('.delete').on('click', handleTodoDelete);
 
   $('#editActiveTodoFormContainer').hide();

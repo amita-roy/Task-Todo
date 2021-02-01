@@ -73,6 +73,8 @@ body {
 .project {
   padding: 10px 20px;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }
 
 .project:hover {
@@ -166,7 +168,8 @@ label {
 .high,
 .low,
 .medium,
-.delete {
+.delete,
+.deleteProject {
   padding: 3px 15px;
   border-radius: 4px;
   font-size: 12px;
@@ -177,11 +180,13 @@ label {
 }
 
 .high,
-.delete {
+.delete,
+.deleteProject {
   color: white;
 }
 
-.delete {
+.delete,
+.deleteProject {
   background-color: rgb(255, 12, 44);
 }
 
