@@ -101,6 +101,23 @@ const main = () => {
     $('.project').on('click', handleChangeActiveProject);
   };
 
+  const handleAddNewTodo = (event) => {
+    event.preventDefault();
+    const form = $(event.target);
+    const todo = form.serializeArray();
+    const activeProject = app.getActiveProject();
+    activeProject.addTodo(
+      todo[0].value,
+      todo[1].value,
+      todo[3].value,
+      todo[2].value
+    );
+    renderTodos(activeProject);
+    $('.todo').on('click', handleSelectTodo);
+    form[0].reset();
+    form.toggleClass('hidden');
+  };
+
   // change active project
   $('.project').on('click', handleChangeActiveProject);
 
@@ -114,6 +131,8 @@ const main = () => {
   $('#newProjectForm').on('submit', handleAddNewProject);
 
   $('#newTodoBtn').on('click', handleAddTodoShowForm);
+
+  $('#todoForm').on('submit', handleAddNewTodo);
 
   $('.activeTodo').hide();
 };
