@@ -96,11 +96,17 @@ body {
   background-color: rgba(211, 211, 211, 0.3);
 }
 
+.todoTopContent {
+  display: flex;
+  justify-content: space-between;
+}
+
 input,
 textarea,
 select {
   padding: 8px 20px;
   font-size: 16px;
+  width: 100%;
 }
 
 button,
@@ -141,11 +147,6 @@ button:focus {
 
 .editActiveTodoForm {
   width: 500px;
-}
-
-.editActiveTodoForm input,
-.editActiveTodoForm textarea {
-  width: 100%;
 }
 
 label {

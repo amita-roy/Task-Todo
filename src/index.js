@@ -27,11 +27,17 @@ const renderTodos = (activeProject) => {
   todoContainer.empty();
   activeProject.getTodos().forEach((todo, index) => {
     const { title, priority, dueDate, description } = todo.getInfo();
+
     todoContainer.append(
       `<li class="todo" data-id=${index}>
-      <span>${title}</span>
-      <span class="${priority}">${priority}</span>
-      <span>${dueDate}</span>
+      <div class="todoTopContent">
+      <p>${title}</p>
+      <p> <span class="${priority}">${priority}</span>
+      <span>${dueDate}</span></p>
+
+      </div>
+      
+     
       <p class="todo-description">${description}</p>
       </li>`
     );
