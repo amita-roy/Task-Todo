@@ -145,7 +145,8 @@ button:focus {
   padding: 20px;
 }
 
-.editActiveTodoForm {
+.editActiveTodoForm,
+#todoForm {
   width: 500px;
 }
 

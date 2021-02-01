@@ -82,6 +82,11 @@ const main = () => {
     form.toggleClass('hidden');
   };
 
+  const handleAddTodoShowForm = () => {
+    const form = $('#todoForm');
+    form.toggleClass('hidden');
+  };
+
   const handleAddNewProject = (event) => {
     event.preventDefault();
     const form = $(event.target);
@@ -107,6 +112,8 @@ const main = () => {
 
   // submit new project form
   $('#newProjectForm').on('submit', handleAddNewProject);
+
+  $('#newTodoBtn').on('click', handleAddTodoShowForm);
 
   $('.activeTodo').hide();
 };
