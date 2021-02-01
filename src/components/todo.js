@@ -6,8 +6,8 @@ class Todo {
     this.priority = priority;
   }
 
-  getTitle() {
-    return this.title;
+  getInfo() {
+    return [this.name, this.priority, this.dueDate];
   }
 }
 

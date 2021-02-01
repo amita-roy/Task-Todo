@@ -6,6 +6,10 @@ class Project {
     this.todos = [];
   }
 
+  getName() {
+    return this.name;
+  }
+
   getTodos() {
     return this.todos;
   }

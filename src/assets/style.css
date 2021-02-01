@@ -59,13 +59,14 @@ body {
   width: 68%;
 }
 
-.projects,
-.todos {
+#projects,
+#todos {
   list-style: none;
+  margin-top: 20px;
+  margin-left: 0;
 }
 
 .project {
-  list-style-type: none;
   padding: 10px 20px;
   cursor: pointer;
 }
