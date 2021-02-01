@@ -26,12 +26,13 @@ const renderTodos = (activeProject) => {
 
   todoContainer.empty();
   activeProject.getTodos().forEach((todo, index) => {
-    const { title, priority, dueDate } = todo.getInfo();
+    const { title, priority, dueDate, description } = todo.getInfo();
     todoContainer.append(
       `<li class="todo" data-id=${index}>
-      <p>${title}</p>
-      <p>${priority}</p>
-      <p>${dueDate}</p>
+      <span>${title}</span>
+      <span>${priority}</span>
+      <span>${dueDate}</span>
+      <p class="todo-description">${description}</p>
       </li>`
     );
   });
@@ -39,10 +40,69 @@ const renderTodos = (activeProject) => {
   $('#activeProject').text(activeProject.getName());
 };
 
+const renderSelectedTodo = (todo) => {
+  const info = todo.getInfo();
+  $('.activeTodo').show();
+  $('.activeTodo input[name=title]').val(info.title);
+  $('.activeTodo #todoDescription').text(info.description);
+  $('.activeTodo select#priority').val(info.priority);
+  $('.activeTodo input[name=dueDate]').val(info.dueDate);
+};
+
 const main = () => {
   const app = new App();
   renderProjects(app.getAllProjects(), app.getActiveProjectIndex());
   renderTodos(app.getActiveProject());
+
+  const handleSelectTodo = (event) => {
+    const index = $(event.currentTarget).data('id');
+    const todos = app.getActiveProject().getTodos();
+    const selectedTodo = todos[index];
+    renderSelectedTodo(selectedTodo);
+  };
+
+  const handleChangeActiveProject = (event) => {
+    const index = $(event.target).data('id');
+    app.setActiveProjectIndex(index);
+    renderProjects(app.getAllProjects(), app.getActiveProjectIndex());
+    renderTodos(app.getActiveProject());
+    $('.activeTodo').hide();
+    $('.todo').on('click', handleSelectTodo);
+    $('.project').on('click', handleChangeActiveProject);
+  };
+
+  const handleAddProjectShowForm = () => {
+    const form = $('#newProjectForm');
+    form.toggleClass('hidden');
+  };
+
+  const handleAddNewProject = (event) => {
+    event.preventDefault();
+    const form = $(event.target);
+    const projectName = form.serializeArray()[0].value;
+    app.addNewProject(projectName);
+    renderProjects(app.getAllProjects(), app.getActiveProjectIndex());
+    // Reset form input
+    form[0].reset();
+    // Hide form
+    form.toggleClass('hidden');
+
+    $('.project').on('click', handleChangeActiveProject);
+  };
+
+  // change active project
+  $('.project').on('click', handleChangeActiveProject);
+
+  // select a todo
+  $('.todo').on('click', handleSelectTodo);
+
+  // click add new project button
+  $('#newProjectBtn').on('click', handleAddProjectShowForm);
+
+  // submit new project form
+  $('#newProjectForm').on('submit', handleAddNewProject);
+
+  $('.activeTodo').hide();
 };
 
 $(main);

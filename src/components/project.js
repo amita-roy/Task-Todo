@@ -14,8 +14,8 @@ class Project {
     return this.todos;
   }
 
-  addTodo(title, description, priority, dueDate) {
-    this.todos.push(new Todo(title, description, priority, dueDate));
+  addTodo(title, description, dueDate, priority) {
+    this.todos.push(new Todo(title, description, dueDate, priority));
   }
 
   setActive() {

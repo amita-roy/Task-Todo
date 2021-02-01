@@ -9,6 +9,10 @@ body {
   font-weight: normal;
 }
 
+.mt {
+  margin-top: 20px;
+}
+
 @font-face {
   font-family: 'Poppins';
   src: url('./fonts/Poppins-Bold.ttf') format('truetype');
@@ -80,10 +84,55 @@ body {
 }
 
 .todo {
-  display: flex;
+  padding: 10px 20px;
   cursor: pointer;
 }
 
-.todo p {
+.todo span {
   margin-right: 30px;
+}
+
+.todo:hover {
+  background-color: rgba(211, 211, 211, 0.3);
+}
+
+input[type='text'],
+textarea {
+  padding: 10px 20px;
+}
+
+button,
+input[type='submit'] {
+  margin: 10px 0;
+  padding: 10px 20px;
+  background-color: palevioletred;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: rgb(226, 53, 110);
+  box-shadow: 3px 3px 12px 5px rgba(146, 146, 146, 0.3);
+}
+
+button:focus {
+  outline: none;
+}
+
+#newProjectForm {
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.activeTodo {
+  margin-top: 30px;
+  border: 1px solid lightgray;
+  padding: 20px;
 }

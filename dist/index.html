@@ -10,10 +10,46 @@
       <div id="projectsContainer">
         <h2>All Projects</h2>
         <ul id="projects"></ul>
+        <button id="newProjectBtn">Add New project</button>
+        <form action="" id="newProjectForm" class="hidden">
+          <div>
+            <label for="name">Project name</label><br />
+            <input type="text" name="name" />
+          </div>
+          <input type="submit" value="Add Project" />
+        </form>
       </div>
       <div id="todosContainer">
         <h2>All Todos for <span id="projectTodos"></span></h2>
         <ul id="todos"></ul>
+        <div class="activeTodo">
+          <form class="editActiveTodoForm">
+            <div class="mt">
+              <label for="title">Title</label><br />
+              <input type="text" name="title" />
+            </div>
+
+            <div class="mt">
+              <label for="description">Description</label><br />
+              <textarea name="description" id="todoDescription"></textarea>
+            </div>
+
+            <div class="mt">
+              <label for="priority">Priority</label><br />
+              <select name="priority" id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+
+            <div class="mt">
+              <label for="dueDate">Due Date</label><br />
+              <input type="date" name="dueDate" />
+            </div>
+            <input type="submit" value="save" />
+          </form>
+        </div>
       </div>
     </div>
     <script src="main.js"></script>
