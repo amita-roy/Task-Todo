@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import './assets/style.css';
 import App from './components/app';
+import Todo from './components/todo';
 
 /*
 1. What is the user story?
@@ -46,13 +47,14 @@ const renderTodos = (activeProject) => {
   $('#projectTodos').text(activeProject.getName());
 };
 
-const renderSelectedTodo = (todo) => {
+const renderSelectedTodo = (todo, index) => {
   const info = todo.getInfo();
-  $('.activeTodo').show();
-  $('.activeTodo input[name=title]').val(info.title);
-  $('.activeTodo #todoDescription').text(info.description);
-  $('.activeTodo select#priority').val(info.priority);
-  $('.activeTodo input[name=dueDate]').val(info.dueDate);
+  $('#editActiveTodoFormContainer').show();
+  $('#editActiveTodoFormContainer input[name=title]').val(info.title);
+  $('#editActiveTodoFormContainer #todoDescription').text(info.description);
+  $('#editActiveTodoFormContainer select#priority').val(info.priority);
+  $('#editActiveTodoFormContainer input[name=dueDate]').val(info.dueDate);
+  $('#editActiveTodoFormContainer input[type=hidden]').val(index);
 };
 
 const main = () => {
@@ -61,7 +63,7 @@ const main = () => {
   renderTodos(app.getActiveProject());
 
   const handleAddTodoShowForm = () => {
-    $('.activeTodo').hide();
+    $('#editActiveTodoFormContainer').hide();
     const formContainer = $('#newTodoForm');
     formContainer.removeClass('hidden');
   };
@@ -72,7 +74,7 @@ const main = () => {
     const index = $(event.currentTarget).data('id');
     const todos = app.getActiveProject().getTodos();
     const selectedTodo = todos[index];
-    renderSelectedTodo(selectedTodo);
+    renderSelectedTodo(selectedTodo, index);
   };
 
   const handleChangeActiveProject = (event) => {
@@ -80,7 +82,7 @@ const main = () => {
     app.setActiveProjectIndex(index);
     renderProjects(app.getAllProjects(), app.getActiveProjectIndex());
     renderTodos(app.getActiveProject());
-    $('.activeTodo').hide();
+    $('#editActiveTodoFormContainer').hide();
     $('.todo').on('click', handleSelectTodo);
     $('.project').on('click', handleChangeActiveProject);
   };
@@ -125,6 +127,20 @@ const main = () => {
     event.preventDefault();
     const form = $(event.target);
     const todoUpdates = form.serializeArray();
+    const index = Number(todoUpdates[4].value);
+    const activeProject = app.getActiveProject();
+    const updatedTodo = new Todo(
+      todoUpdates[0].value,
+      todoUpdates[1].value,
+      todoUpdates[3].value,
+      todoUpdates[2].value
+    );
+
+    activeProject.updateTodo(updatedTodo, index);
+    form[0].reset();
+    $('#editActiveTodoFormContainer').hide();
+    renderTodos(activeProject);
+    $('.todo').on('click', handleSelectTodo);
   };
 
   // change active project
@@ -145,7 +161,7 @@ const main = () => {
 
   $('#editActiveTodoForm').on('submit', handleEditTodo);
 
-  $('.activeTodo').hide();
+  $('#editActiveTodoFormContainer').hide();
 };
 
 $(main);

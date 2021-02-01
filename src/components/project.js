@@ -18,6 +18,10 @@ class Project {
     this.todos.push(new Todo(title, description, dueDate, priority));
   }
 
+  updateTodo(todo, index) {
+    this.todos[index] = todo;
+  }
+
   setActive() {
     this.active = true;
   }

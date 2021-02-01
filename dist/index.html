@@ -22,7 +22,7 @@
       <div id="todosContainer">
         <h2>All Todos for <span id="projectTodos"></span></h2>
         <ul id="todos"></ul>
-        <div class="activeTodo">
+        <div id="editActiveTodoFormContainer">
           <h3>Edit Todo</h3>
           <form class="editActiveTodoForm" id="editActiveTodoForm">
             <div class="mt">
@@ -52,7 +52,8 @@
               <label for="dueDate">Due Date</label>
               <input type="date" name="dueDate" />
             </div>
-            <input type="submit" value="save" />
+            <input type="hidden" name="id" />
+            <input type="submit" value="Save" />
           </form>
         </div>
 
