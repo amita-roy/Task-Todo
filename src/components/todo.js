@@ -7,7 +7,11 @@ class Todo {
   }
 
   getInfo() {
-    return [this.name, this.priority, this.dueDate];
+    return {
+      title: this.title,
+      priority: this.priority,
+      dueDate: this.dueDate,
+    };
   }
 }
 

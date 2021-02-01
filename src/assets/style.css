@@ -78,3 +78,12 @@ body {
 .active {
   background-color: rgba(211, 211, 211, 0.3);
 }
+
+.todo {
+  display: flex;
+  cursor: pointer;
+}
+
+.todo p {
+  margin-right: 30px;
+}

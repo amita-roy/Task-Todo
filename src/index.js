@@ -21,9 +21,28 @@ const renderProjects = (projects, activeProjectIndex) => {
   $(`.project[data-id=${activeProjectIndex}]`).addClass('active');
 };
 
+const renderTodos = (activeProject) => {
+  const todoContainer = $('#todos');
+
+  todoContainer.empty();
+  activeProject.getTodos().forEach((todo, index) => {
+    const { title, priority, dueDate } = todo.getInfo();
+    todoContainer.append(
+      `<li class="todo" data-id=${index}>
+      <p>${title}</p>
+      <p>${priority}</p>
+      <p>${dueDate}</p>
+      </li>`
+    );
+  });
+
+  $('#activeProject').text(activeProject.getName());
+};
+
 const main = () => {
   const app = new App();
   renderProjects(app.getAllProjects(), app.getActiveProjectIndex());
+  renderTodos(app.getActiveProject());
 };
 
 $(main);
