@@ -18,6 +18,10 @@ class Project {
     this.todos.push(new Todo(title, description, dueDate, priority));
   }
 
+  removeTodoAt(index) {
+    this.todos.splice(index, 1);
+  }
+
   updateTodo(todo, index) {
     this.todos[index] = todo;
   }

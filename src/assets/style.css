@@ -165,15 +165,24 @@ label {
 
 .high,
 .low,
-.medium {
+.medium,
+.delete {
   padding: 3px 15px;
   border-radius: 4px;
   font-size: 12px;
 }
 
 .high {
-  background-color: rgb(255, 12, 44);
+  background-color: rgb(122, 1, 17);
+}
+
+.high,
+.delete {
   color: white;
+}
+
+.delete {
+  background-color: rgb(255, 12, 44);
 }
 
 .low {

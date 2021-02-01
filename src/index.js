@@ -15,7 +15,7 @@ const renderProjects = (projects, activeProjectIndex) => {
   projectContainer.empty();
   projects.forEach((project, index) => {
     projectContainer.append(
-      `<li class="project" data-id=${index}>${project.getName()}</li>`
+      `<li class="project" data-id=${index}>${project.getName()} </li>`
     );
   });
   $('.project').removeClass('active');
@@ -33,12 +33,9 @@ const renderTodos = (activeProject) => {
       `<li class="todo" data-id=${index}>
       <div class="todoTopContent">
       <p>${title}</p>
-      <p> <span class="${priority}">${priority}</span>
-      <span>${dueDate}</span></p>
-
+      <p data-id=${index}><span class="${priority}">${priority}</span>
+      <span>${dueDate}</span> <span class="delete">Delete</span></p>
       </div>
-      
-     
       <p class="todo-description">${description}</p>
       </li>`
     );
@@ -77,6 +74,17 @@ const main = () => {
     renderSelectedTodo(selectedTodo, index);
   };
 
+  const handleTodoDelete = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const index = $(event.target).parent().data('id');
+    const activeProject = app.getActiveProject();
+    activeProject.removeTodoAt(index);
+    renderTodos(activeProject);
+    $('.todo').on('click', handleSelectTodo);
+    $('.delete').on('click', handleTodoDelete);
+  };
+
   const handleChangeActiveProject = (event) => {
     const index = $(event.target).data('id');
     app.setActiveProjectIndex(index);
@@ -84,6 +92,7 @@ const main = () => {
     renderTodos(app.getActiveProject());
     $('#editActiveTodoFormContainer').hide();
     $('.todo').on('click', handleSelectTodo);
+    $('.delete').on('click', handleTodoDelete);
     $('.project').on('click', handleChangeActiveProject);
   };
 
@@ -119,6 +128,7 @@ const main = () => {
     );
     renderTodos(activeProject);
     $('.todo').on('click', handleSelectTodo);
+    $('.delete').on('click', handleTodoDelete);
     form[0].reset();
     $('#newTodoForm').addClass('hidden');
   };
@@ -141,6 +151,7 @@ const main = () => {
     $('#editActiveTodoFormContainer').hide();
     renderTodos(activeProject);
     $('.todo').on('click', handleSelectTodo);
+    $('.delete').on('click', handleTodoDelete);
   };
 
   // change active project
@@ -160,8 +171,11 @@ const main = () => {
   $('#todoForm').on('submit', handleAddNewTodo);
 
   $('#editActiveTodoForm').on('submit', handleEditTodo);
+  $('.delete').on('click', handleTodoDelete);
 
   $('#editActiveTodoFormContainer').hide();
+
+  window.$ = $;
 };
 
 $(main);
