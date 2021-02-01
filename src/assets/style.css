@@ -101,6 +101,11 @@ body {
   justify-content: space-between;
 }
 
+.todo-description {
+  font-size: 14px;
+  color: darkgray;
+}
+
 input,
 textarea,
 select {
@@ -163,6 +168,7 @@ label {
 .medium {
   padding: 3px 15px;
   border-radius: 4px;
+  font-size: 12px;
 }
 
 .high {

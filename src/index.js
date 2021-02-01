@@ -43,7 +43,7 @@ const renderTodos = (activeProject) => {
     );
   });
 
-  $('#activeProject').text(activeProject.getName());
+  $('#projectTodos').text(activeProject.getName());
 };
 
 const renderSelectedTodo = (todo) => {
@@ -60,7 +60,15 @@ const main = () => {
   renderProjects(app.getAllProjects(), app.getActiveProjectIndex());
   renderTodos(app.getActiveProject());
 
+  const handleAddTodoShowForm = () => {
+    $('.activeTodo').hide();
+    const formContainer = $('#newTodoForm');
+    formContainer.removeClass('hidden');
+  };
+
   const handleSelectTodo = (event) => {
+    // make sure new todo form is hidden
+    $('#newTodoForm').addClass('hidden');
     const index = $(event.currentTarget).data('id');
     const todos = app.getActiveProject().getTodos();
     const selectedTodo = todos[index];
@@ -79,12 +87,7 @@ const main = () => {
 
   const handleAddProjectShowForm = () => {
     const form = $('#newProjectForm');
-    form.toggleClass('hidden');
-  };
-
-  const handleAddTodoShowForm = () => {
-    const form = $('#todoForm');
-    form.toggleClass('hidden');
+    form.removeClass('hidden');
   };
 
   const handleAddNewProject = (event) => {
@@ -96,7 +99,7 @@ const main = () => {
     // Reset form input
     form[0].reset();
     // Hide form
-    form.toggleClass('hidden');
+    form.addClass('hidden');
 
     $('.project').on('click', handleChangeActiveProject);
   };
@@ -115,7 +118,13 @@ const main = () => {
     renderTodos(activeProject);
     $('.todo').on('click', handleSelectTodo);
     form[0].reset();
-    form.toggleClass('hidden');
+    $('#newTodoForm').addClass('hidden');
+  };
+
+  const handleEditTodo = (event) => {
+    event.preventDefault();
+    const form = $(event.target);
+    const todoUpdates = form.serializeArray();
   };
 
   // change active project
@@ -133,6 +142,8 @@ const main = () => {
   $('#newTodoBtn').on('click', handleAddTodoShowForm);
 
   $('#todoForm').on('submit', handleAddNewTodo);
+
+  $('#editActiveTodoForm').on('submit', handleEditTodo);
 
   $('.activeTodo').hide();
 };
