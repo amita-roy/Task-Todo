@@ -96,9 +96,11 @@ body {
   background-color: rgba(211, 211, 211, 0.3);
 }
 
-input[type='text'],
-textarea {
-  padding: 10px 20px;
+input,
+textarea,
+select {
+  padding: 8px 20px;
+  font-size: 16px;
 }
 
 button,
@@ -135,4 +137,41 @@ button:focus {
   margin-top: 30px;
   border: 1px solid lightgray;
   padding: 20px;
+}
+
+.editActiveTodoForm {
+  width: 500px;
+}
+
+.editActiveTodoForm input,
+.editActiveTodoForm textarea {
+  width: 100%;
+}
+
+label {
+  font-size: 16px;
+  color: rgb(41, 41, 41);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.high,
+.low,
+.medium {
+  padding: 3px 15px;
+  border-radius: 4px;
+}
+
+.high {
+  background-color: rgb(255, 12, 44);
+  color: white;
+}
+
+.low {
+  background-color: rgb(214, 251, 128);
+}
+
+.medium {
+  background-color: rgb(255, 150, 108);
 }

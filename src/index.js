@@ -30,7 +30,7 @@ const renderTodos = (activeProject) => {
     todoContainer.append(
       `<li class="todo" data-id=${index}>
       <span>${title}</span>
-      <span>${priority}</span>
+      <span class="${priority}">${priority}</span>
       <span>${dueDate}</span>
       <p class="todo-description">${description}</p>
       </li>`
