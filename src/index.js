@@ -3,13 +3,6 @@ import './assets/style.css';
 import App from './components/app';
 import Todo from './components/todo';
 
-/*
-1. What is the user story?
-2. What event is triggered?
-3. Update the Data model (if needed)
-4. Render with the updated data model
-*/
-
 const renderProjects = (projects, activeProjectIndex) => {
   const projectContainer = $('#projects');
   projectContainer.empty();
@@ -68,7 +61,6 @@ const main = () => {
   };
 
   const handleSelectTodo = (event) => {
-    // make sure new todo form is hidden
     $('#newTodoForm').addClass('hidden');
     const index = $(event.currentTarget).data('id');
     const todos = app.getActiveProject().getTodos();
@@ -108,9 +100,9 @@ const main = () => {
     const projectName = form.serializeArray()[0].value;
     app.addNewProject(projectName);
     renderProjects(app.getAllProjects(), app.getActiveProjectIndex());
-    // Reset form input
+
     form[0].reset();
-    // Hide form
+
     form.addClass('hidden');
 
     $('.project').on('click', handleChangeActiveProject);
@@ -149,16 +141,12 @@ const main = () => {
     $('.delete').on('click', handleTodoDelete);
   };
 
-  // change active project
   $('.project').on('click', handleChangeActiveProject);
 
-  // select a todo
   $('.todo').on('click', handleSelectTodo);
 
-  // click add new project button
   $('#newProjectBtn').on('click', handleAddProjectShowForm);
 
-  // submit new project form
   $('#newProjectForm').on('submit', handleAddNewProject);
 
   $('#newTodoBtn').on('click', handleAddTodoShowForm);
