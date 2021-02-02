@@ -10,10 +10,16 @@
 > Todo priority colors are different as per the priority level. All the data is getting saved in local storage and we are pulling data from the local storage.
 
 > Todo list
-> ![Homepage]()
+> ![Homepage](./src/assets/images/homepage.png)
 
 > Edit todo
-> ![Todo]()
+> ![Edit Todo](./src/assets/images/editTodo.png)
+
+> Add todo
+> ![Add Todo](./src/assets/images/addTodo.png)
+
+> Add project
+> ![Add Project](./src/assets/images/addProject.png)
 
 ## Built With
 
@@ -25,7 +31,7 @@
 
 ## Live Demo
 
-[Task_todo]()
+[Task_todo](https://task-todo-git-working-branch.royamita.vercel.app)
 
 ### Prerequisites
 
