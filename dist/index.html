@@ -14,7 +14,7 @@
         <form action="" id="newProjectForm" class="hidden">
           <div>
             <label for="name">Project name</label><br />
-            <input type="text" name="name" />
+            <input type="text" name="name" required />
           </div>
           <input type="submit" value="Add Project" />
         </form>
@@ -27,7 +27,7 @@
           <form class="editActiveTodoForm" id="editActiveTodoForm">
             <div class="mt">
               <label for="title">Title</label>
-              <input type="text" name="title" />
+              <input type="text" name="title" required />
             </div>
 
             <div class="mt">
@@ -36,6 +36,7 @@
                 name="description"
                 id="todoDescription"
                 rows="8"
+                required
               ></textarea>
             </div>
 
@@ -50,7 +51,7 @@
 
             <div class="mt">
               <label for="dueDate">Due Date</label>
-              <input type="date" name="dueDate" />
+              <input type="date" name="dueDate" required />
             </div>
             <input type="hidden" name="id" />
             <input type="submit" value="Save" />
@@ -63,7 +64,7 @@
           <form id="todoForm">
             <div class="mt">
               <label for="title">Title</label>
-              <input type="text" name="title" />
+              <input type="text" name="title" required />
             </div>
 
             <div class="mt">
@@ -72,6 +73,7 @@
                 name="description"
                 id="todoDescription"
                 rows="8"
+                required
               ></textarea>
             </div>
 
@@ -86,7 +88,7 @@
 
             <div class="mt">
               <label for="dueDate">Due Date</label>
-              <input type="date" name="dueDate" />
+              <input type="date" name="dueDate" required />
             </div>
             <input type="submit" value="Add Todo" />
           </form>
