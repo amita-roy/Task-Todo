@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Todo</title>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div id="projectsContainer">
+        <h2>All Projects</h2>
+        <ul id="projects"></ul>
+        <button id="newProjectBtn">Add New project</button>
+        <form action="" id="newProjectForm" class="hidden">
+          <div>
+            <label for="name">Project name</label><br />
+            <input type="text" name="name" required />
+          </div>
+          <input type="submit" value="Add Project" />
+        </form>
+      </div>
+      <div id="todosContainer">
+        <h2>All Todos for <span id="projectTodos"></span></h2>
+        <ul id="todos"></ul>
+        <div id="editActiveTodoFormContainer">
+          <h3>Edit Todo</h3>
+          <form class="editActiveTodoForm" id="editActiveTodoForm">
+            <div class="mt">
+              <label for="title">Title</label>
+              <input type="text" name="title" required />
+            </div>
+
+            <div class="mt">
+              <label for="description">Description</label>
+              <textarea
+                name="description"
+                id="todoDescription"
+                rows="8"
+                required
+              ></textarea>
+            </div>
+
+            <div class="mt">
+              <label for="priority">Priority</label>
+              <select name="priority" id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+
+            <div class="mt">
+              <label for="dueDate">Due Date</label>
+              <input type="date" name="dueDate" required />
+            </div>
+            <input type="hidden" name="id" />
+            <input type="submit" value="Save" />
+          </form>
+        </div>
+
+        <button id="newTodoBtn" class="mt">Add New Todo</button>
+        <div id="newTodoForm" class="hidden">
+          <h3>Add New Todo</h3>
+          <form id="todoForm">
+            <div class="mt">
+              <label for="title">Title</label>
+              <input type="text" name="title" required />
+            </div>
+
+            <div class="mt">
+              <label for="description">Description</label>
+              <textarea
+                name="description"
+                id="todoDescription"
+                rows="8"
+                required
+              ></textarea>
+            </div>
+
+            <div class="mt">
+              <label for="priority">Priority</label>
+              <select name="priority" id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+
+            <div class="mt">
+              <label for="dueDate">Due Date</label>
+              <input type="date" name="dueDate" required />
+            </div>
+            <input type="submit" value="Add Todo" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

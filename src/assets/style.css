@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: normal;
+}
+
+.mt {
+  margin-top: 20px;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#projectsContainer {
+  width: 30%;
+  box-shadow: 3px 3px 4px 5px rgba(170, 170, 170, 0.4);
+  min-height: 100vh;
+}
+
+#projectsContainer,
+#todosContainer {
+  padding: 20px 30px;
+}
+
+#todosContainer {
+  width: 68%;
+}
+
+#projects,
+#todos {
+  list-style: none;
+  margin-top: 20px;
+  margin-left: 0;
+}
+
+.project {
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.project:hover {
+  background-color: rgba(211, 211, 211, 0.3);
+}
+
+.active {
+  background-color: rgba(211, 211, 211, 0.3);
+}
+
+.todo {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.todo span {
+  margin-right: 30px;
+}
+
+.todo:hover {
+  background-color: rgba(211, 211, 211, 0.3);
+}
+
+.todoTopContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-description {
+  font-size: 14px;
+  color: darkgray;
+}
+
+input,
+textarea,
+select {
+  padding: 8px 20px;
+  font-size: 16px;
+  width: 100%;
+}
+
+button,
+input[type='submit'] {
+  margin: 10px 0;
+  padding: 10px 20px;
+  background-color: palevioletred;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: rgb(226, 53, 110);
+  box-shadow: 3px 3px 12px 5px rgba(146, 146, 146, 0.3);
+}
+
+button:focus {
+  outline: none;
+}
+
+#newProjectForm {
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.activeTodo {
+  margin-top: 30px;
+  border: 1px solid lightgray;
+  padding: 20px;
+}
+
+.editActiveTodoForm,
+#todoForm {
+  width: 500px;
+}
+
+label {
+  font-size: 16px;
+  color: rgb(41, 41, 41);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.high,
+.low,
+.medium,
+.delete,
+.deleteProject {
+  padding: 3px 15px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.high {
+  background-color: rgb(122, 1, 17);
+}
+
+.high,
+.delete,
+.deleteProject {
+  color: white;
+}
+
+.delete,
+.deleteProject {
+  background-color: rgb(255, 12, 44);
+}
+
+.low {
+  background-color: rgb(214, 251, 128);
+}
+
+.medium {
+  background-color: rgb(255, 150, 108);
+}
