@@ -4,6 +4,7 @@ module.exports = {
     contentBase: './dist',
   },
   module: {
+    loaders: [{ exclude: ['node_modules'], loader: 'babel', test: /\.js?$/ }],
     rules: [
       {
         test: /\.css$/i,
