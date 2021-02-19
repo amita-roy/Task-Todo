@@ -53,7 +53,7 @@ Node
 
 - 'npm start' is for starting the server in development mode
 
-- 'npm run watch' to run the tests
+- 'npm run watch' to run the tests for App, Project, and Todo classes
 
 ### Usage
 
