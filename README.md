@@ -5,7 +5,7 @@
 - Add a new Project
 - Add a new Todo in the selected project
 - Edit todo details
-- Delete a todo
+- Delete a todo test
 
 > Todo priority colors are different as per the priority level. All the data is getting saved in local storage and we are pulling data from the local storage.
 
