@@ -53,6 +53,8 @@ Node
 
 - 'npm start' is for starting the server in development mode
 
+- 'npm run watch' to run the tests
+
 ### Usage
 
 Start server with:
@@ -61,7 +63,12 @@ Start server with:
     npm start
 ```
 
-## Author
+## Authors
+
+👤 **Elias Castañeda**
+
+- Github: [@e71az](https://github.com/e71az)
+- Linkedin: [@e71az](https://www.linkedin.com/in/eliasecasta/)
 
 👤 **Amita Roy**
 
