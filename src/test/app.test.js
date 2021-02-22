@@ -25,10 +25,17 @@ test('should remove one project from projects array', () => {
   app.removeProjectAt(0);
   expect(app.getAllProjects().length).toBe(1);
 });
+
+test('should add a new todo in  active project todos array', () => {
+  const active = app.getActiveProject();
+  active.addTodo('title1', 'description3', '2020-02-24', 'medium');
+  expect(active.getTodos().length).toBe(1);
+});
+
 test('should return the length of active project todos array', () => {
   const active = app.getActiveProject();
   active.addTodo('title', 'description', '2020-02-24', 'medium');
-  expect(active.getTodos().length).toBe(1);
+  expect(active.getTodos().length).toBe(2);
 });
 
 test('should update the todo of activeProject at given index', () => {
@@ -40,10 +47,10 @@ test('should update the todo of activeProject at given index', () => {
 
 test('should return the length of active project todos array', () => {
   const active = app.getActiveProject();
-  expect(active.getTodos().length).toBe(1);
+  expect(active.getTodos().length).toBe(2);
 });
 test('should remove the todo at given index from activeProject', () => {
   const active = app.getActiveProject();
   active.removeTodoAt(0);
-  expect(active.getTodos().length).toBe(0);
+  expect(active.getTodos().length).toBe(1);
 });
